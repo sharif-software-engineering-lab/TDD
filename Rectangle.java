@@ -1,6 +1,6 @@
 public class Rectangle {
-    private final double length;
-    private final double width;
+    private double length;
+    private double width;
 
     public Rectangle(double length, double width) {
         validateDimensions(length, width);
@@ -8,9 +8,32 @@ public class Rectangle {
         this.width = width;
     }
 
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        validateDimension(length);
+        this.length = length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        validateDimension(width);
+        this.width = width;
+    }
+
     private void validateDimensions(double length, double width) {
-        if (length < 0 || width < 0) {
-            throw new IllegalArgumentException("Length and width must be non-negative");
+        validateDimension(length);
+        validateDimension(width);
+    }
+
+    private void validateDimension(double dimension) {
+        if (dimension < 0) {
+            throw new IllegalArgumentException("Dimension must be non-negative");
         }
     }
 
